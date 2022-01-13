@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
 import type { AppProps } from "next/app";
 import { NextIntlProvider } from "next-intl";
+import { UserProvider } from "@auth0/nextjs-auth0";
 
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
@@ -19,9 +20,11 @@ Router.events.on("routeChangeError", progrss.finish);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <NextIntlProvider messages={pageProps.messages}>
-      <Component {...pageProps} />
-    </NextIntlProvider>
+    <UserProvider>
+      <NextIntlProvider messages={pageProps.messages}>
+        <Component {...pageProps} />
+      </NextIntlProvider>
+    </UserProvider>
   );
 }
 

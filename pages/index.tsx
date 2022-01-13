@@ -1,6 +1,7 @@
 import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next";
 import Head from "next/head";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const t = useTranslations("home");
@@ -15,6 +16,9 @@ const Home: NextPage = () => {
 
       <main>
         <div className="p-2">test</div>
+        <Link href="/api/auth/login">
+          <a>About Us</a>
+        </Link>
       </main>
 
       <footer>
