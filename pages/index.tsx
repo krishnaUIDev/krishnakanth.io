@@ -15,6 +15,7 @@ const Home: NextPage = () => {
 
       <main>
         <div className="p-2">test</div>
+        <a href="/api/auth/login">Login</a>
       </main>
 
       <footer>
