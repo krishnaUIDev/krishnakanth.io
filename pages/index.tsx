@@ -2,7 +2,7 @@ import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next";
 import Head from "next/head";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "../components/Header";
 
 const Home: NextPage = () => {
   const t = useTranslations("home");
