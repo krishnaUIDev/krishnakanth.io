@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Header from "../components/Header";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   const t = useTranslations("home");
@@ -25,7 +26,7 @@ const Home: NextPage = () => {
             with millions of readers.
           </h2>
         </div>
-        <img
+        <Image
           src="https://accountabilitylab.org/wp-content/uploads/2020/03/Medium-logo.png"
           alt=""
           className="hidden md:inline-flex h-12 lg:h-full"
