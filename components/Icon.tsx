@@ -1,7 +1,12 @@
 import React from "react";
 import simpleIcons from "simple-icons";
 
-const Icon = ({ type, style }) => {
+interface IconProps {
+  type: string;
+  style?: object;
+}
+
+const Icon = ({ type, style }: IconProps) => {
   const icon = simpleIcons.get(type);
 
   return (

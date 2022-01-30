@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import simpleIcons from "simple-icons";
 import Nav from "./NavBar";
 
-export const Icon = ({ stack, style }) => {
+interface LayoutProps {
+  children: any;
+  isHomepage?: boolean;
+  secondaryPage?: boolean;
+}
+
+interface IconProps {
+  stack?: string;
+  style?: object;
+}
+
+export const Icon = ({ stack, style }: IconProps) => {
   const icon = simpleIcons.get(stack);
 
   return (
@@ -21,7 +32,7 @@ export const Icon = ({ stack, style }) => {
   );
 };
 
-function Layout({ children, isHomepage, secondaryPage, noHead = false }) {
+const Layout = ({ children, isHomepage, secondaryPage }: LayoutProps) => {
   const containerProps = {
     ...(isHomepage && { md: 12 }),
     ...(!isHomepage && { md: 8, mdOffset: 2 }),
@@ -50,6 +61,6 @@ function Layout({ children, isHomepage, secondaryPage, noHead = false }) {
       <footer>footer</footer>
     </>
   );
-}
+};
 
 export default Layout;
