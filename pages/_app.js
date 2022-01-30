@@ -1,8 +1,21 @@
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { useState, useEffect } from "react";
-
+import { NextIntlProvider } from "next-intl";
 import "../styles/base.css";
+import ProgressBar from "@badrap/bar-of-progress";
+import Router from "next/router";
+
+const progrss = new ProgressBar({
+  size: 4,
+  color: "#FE595E",
+  className: "z-50",
+  delay: 100,
+});
+
+Router.events.on("routeChangeStart", progrss.start);
+Router.events.on("routeChangeComplete", progrss.finish);
+Router.events.on("routeChangeError", progrss.finish);
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const og = pageProps.data?.og;
@@ -47,9 +60,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
         <title>{title || `Krishnakanth`}</title>
       </Head>
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
+      <NextIntlProvider messages={pageProps?.messages}>
+        <SessionProvider session={session}>
+          <Component {...pageProps} />
+        </SessionProvider>
+      </NextIntlProvider>
     </>
   );
 }

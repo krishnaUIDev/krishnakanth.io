@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-flexbox-grid";
 import dynamic from "next/dynamic";
 import { config } from "react-spring";
+import { useTranslations } from "next-intl";
 
 const TextTransition = dynamic(() => import("react-text-transition"), {
   ssr: false,
@@ -15,6 +16,7 @@ import { AFFILIATIONS } from "../constants/Uses";
 function About() {
   const [index, setIndex] = useState(0);
   const avatar = `/images/Avatar.jpg`;
+  const t = useTranslations("navBar");
 
   var subtitleStyle = {
     color: "#222",
@@ -87,6 +89,14 @@ function About() {
       </Layout>
     </>
   );
+}
+
+export function getStaticProps({ locale }) {
+  return {
+    props: {
+      messages: require(`../lang/${locale}.json`),
+    },
+  };
 }
 
 export default About;

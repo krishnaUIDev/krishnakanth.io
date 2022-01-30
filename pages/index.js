@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import matter from "gray-matter";
 import dynamic from "next/dynamic";
 import { Row, Col } from "react-flexbox-grid";
 import { config } from "react-spring";
+import { useTranslations } from "next-intl";
 
 const TextTransition = dynamic(() => import("react-text-transition"), {
   ssr: false,
@@ -12,10 +12,10 @@ const TextTransition = dynamic(() => import("react-text-transition"), {
 import { SKILLS, SOCIAL } from "../constants/Stack";
 import Layout, { Icon } from "../components/Layout";
 
-function Homepage({ writings }) {
+function Homepage() {
   const [index, setIndex] = useState(0);
-
   const avatar = `/images/Avatar.jpg`;
+  const t = useTranslations("home");
 
   useEffect(() => {
     const intervalId = setInterval(
@@ -40,11 +40,11 @@ function Homepage({ writings }) {
           <div className="about-intro">
             <Row>
               <Col md={12}>
-                Hi there and welcome 👋🏻.
+                {t("title")} 👋🏻.
                 <br />
-                Web Developer
+                {t("profession")}
                 <br />
-                All about business enabling technology (check my{" "}
+                {t("about")} (check my{" "}
                 <a
                   href="https://github.com/krishnaUIDev"
                   target="_blank"
@@ -54,7 +54,7 @@ function Homepage({ writings }) {
                 </a>{" "}
                 ).
                 <br />
-                Heavy focus on React, NodeJS, and Native apps.
+                {t("techStack")}
                 <br />
               </Col>
             </Row>
@@ -102,31 +102,12 @@ function Homepage({ writings }) {
   );
 }
 
-Homepage.getInitialProps = async (context) => {
-  const writings = ((context) => {
-    const keys = context.keys();
-    const values = keys.map(context);
-    const data = keys.map((key, index) => {
-      const slug = key
-        .replace(/^.*[\\\/]/, "")
-        .split(".")
-        .slice(0, -1)
-        .join(".");
-      const value = values[index];
-      const document = matter(value.default);
-      return { document, slug };
-    });
-
-    return data
-      .slice()
-      .sort(
-        (a, b) =>
-          new Date(b.document.data.date) - new Date(a.document.data.date)
-      );
-  })(require.context("../writings", true, /\.md$/));
-
+export function getStaticProps({ locale }) {
   return {
-    writings,
+    props: {
+      messages: require(`../lang/${locale}.json`),
+    },
   };
-};
+}
+
 export default Homepage;

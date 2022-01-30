@@ -1,0 +1,18 @@
+{
+  "home": {
+    "title": "hola y bienvenido",
+    "profession": "Desarrolladora web",
+    "about": "Todo sobre la tecnología habilitadora de negocios",
+    "techStack": "Fuerte enfoque en React, NodeJS y aplicaciones nativas."
+  },
+  "navBar": {
+    "home": "Casa",
+    "about": "Acerca de",
+    "blog": "Blog",
+    "users": "Usos",
+    "profile": "Tu perfil",
+    "settings": "Ajustes",
+    "signOut": "desconectar",
+    "signIn": "Iniciar sesión"
+  }
+}

@@ -14,4 +14,8 @@ module.exports = withTM({
     // Important: return the modified config
     return config;
   },
+  i18n: {
+    locales: ["en", "de", "sp"],
+    defaultLocale: "en",
+  },
 });

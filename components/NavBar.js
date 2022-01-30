@@ -9,13 +9,8 @@ import {
 } from "@heroicons/react/outline";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
-
-const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "About", href: "/about", current: false },
-  { name: "Blog", href: "/blog", current: false },
-  { name: "Uses", href: "/uses", current: false },
-];
+import { useTranslations } from "next-intl";
+import Language from "./Language";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -24,6 +19,14 @@ function classNames(...classes) {
 export default function NavBar() {
   const { data: session } = useSession();
   const router = useRouter();
+  const t = useTranslations("navBar");
+
+  const navigation = [
+    { name: t("home"), href: "/" },
+    { name: t("about"), href: "/about" },
+    { name: t("blog"), href: "/blog" },
+    { name: t("users"), href: "/uses" },
+  ];
 
   const onLoadTheme =
     typeof localStorage !== "undefined" && localStorage.getItem("BLOG_THEME");
@@ -91,7 +94,9 @@ export default function NavBar() {
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "px-3 py-2 rounded-md text-sm font-medium"
                         )}
-                        aria-current={item.current ? "page" : undefined}
+                        aria-current={
+                          router.asPath === item.href ? "page" : undefined
+                        }
                       >
                         {item.name}
                       </a>
@@ -149,7 +154,7 @@ export default function NavBar() {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Your Profile
+                                {t("profile")}
                               </a>
                             )}
                           </Menu.Item>
@@ -162,7 +167,7 @@ export default function NavBar() {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Settings
+                                {t("settings")}
                               </a>
                             )}
                           </Menu.Item>
@@ -175,7 +180,7 @@ export default function NavBar() {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Sign out
+                                {t("signOut")}
                               </a>
                             )}
                           </Menu.Item>
@@ -191,7 +196,7 @@ export default function NavBar() {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Sign In
+                                {t("signIn")}
                               </a>
                             )}
                           </Menu.Item>
@@ -204,7 +209,7 @@ export default function NavBar() {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Settings
+                                {t("settings")}
                               </a>
                             )}
                           </Menu.Item>
@@ -213,6 +218,7 @@ export default function NavBar() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+                <Language />
               </div>
             </div>
           </div>
@@ -225,12 +231,14 @@ export default function NavBar() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current
+                    router.asPath === item.href
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : undefined}
+                  aria-current={
+                    router.asPath === item.href ? "page" : undefined
+                  }
                 >
                   {item.name}
                 </Disclosure.Button>

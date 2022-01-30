@@ -1,0 +1,18 @@
+{
+  "home": {
+    "title": "Hi there and welcome",
+    "profession": "Web Developer",
+    "about": "All about business enabling technology",
+    "techStack": "Heavy focus on React, NodeJS, and Native apps."
+  },
+  "navBar": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "users": "Uses",
+    "profile": "Your Profile",
+    "settings": "Settings",
+    "signOut": "Sign out",
+    "signIn": "Sign In"
+  }
+}

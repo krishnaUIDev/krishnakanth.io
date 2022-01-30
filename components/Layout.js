@@ -1,28 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import { Sun, Moon } from "react-feather";
-import Link from "next/link";
 import simpleIcons from "simple-icons";
 import Nav from "./NavBar";
-
-const menu = [
-  {
-    path: "/",
-    name: "Home",
-  },
-  {
-    path: "/about",
-    name: "About",
-  },
-  {
-    path: "/blog",
-    name: "blog",
-  },
-  {
-    path: "/uses",
-    name: "uses",
-  },
-];
 
 export const Icon = ({ stack, style }) => {
   const icon = simpleIcons.get(stack);

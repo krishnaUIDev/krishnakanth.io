@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import { USES } from "../constants/Uses";
 
-function Uses({ og }) {
+function Uses() {
   return (
     <>
       <Layout secondaryPage>
@@ -37,15 +37,12 @@ function Uses({ og }) {
   );
 }
 
-Uses.getInitialProps = () => {
+export function getStaticProps({ locale }) {
   return {
-    data: {
-      og: {
-        description: "What Telmo uses on a daily basis.",
-        image: "https://telmo.im/og/uses.png",
-      },
+    props: {
+      messages: require(`../lang/${locale}.json`),
     },
   };
-};
+}
 
 export default Uses;

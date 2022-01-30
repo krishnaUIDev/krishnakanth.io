@@ -9,4 +9,12 @@ function Profile() {
   );
 }
 
+export function getStaticProps({ locale }) {
+  return {
+    props: {
+      messages: require(`../lang/${locale}.json`),
+    },
+  };
+}
+
 export default Profile;
