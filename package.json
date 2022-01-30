@@ -22,7 +22,6 @@
     "next": "^9.4.4",
     "next-auth": "^4.1.2",
     "next-transpile-modules": "^2.3.1",
-    "pandas": "0.0.3",
     "raw-loader": "^4.0.1",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
