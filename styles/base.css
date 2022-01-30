@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://rsms.me/inter/inter.css");
 @import url("https://use.typekit.net/cyw3eir.css");
 
@@ -17,7 +20,8 @@
   --primary-color: #9a97f3;
   --secondary-color: #666;
   --font-color: #fff;
-  --bg-color: #010101;
+  /* --bg-color: #010101; */
+  --bg-color: #20232a;
   --heading-color: #fff;
   --highlight-color: #f81de6;
   --hr-color: #222;
@@ -44,8 +48,12 @@ body {
   transition: background 0.2s linear;
 }
 
+/* ::-webkit-scrollbar {
+  min-width: 10px;
+  min-height: 10px;
+} */
+
 .top-menu {
-  margin: 20px 10px 0;
 }
 
 .top-menu ul {

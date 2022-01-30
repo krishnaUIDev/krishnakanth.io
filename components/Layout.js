@@ -78,7 +78,7 @@ function Layout({ children, isHomepage, secondaryPage, noHead = false }) {
   return (
     <>
       <div className="top-menu">
-        <Row>
+        <div className="flex flex-row">
           <Col xs={10}>
             <ul>
               <li className="logo">
@@ -105,7 +105,7 @@ function Layout({ children, isHomepage, secondaryPage, noHead = false }) {
               {theme === "dark" ? <Sun /> : <Moon />}
             </button>
           </Col>
-        </Row>
+        </div>
       </div>
 
       <Grid>
