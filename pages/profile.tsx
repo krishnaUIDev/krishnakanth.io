@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 
 function Profile() {
   return (
-    <Layout secondaryPage>
+    <Layout secondaryPage isHomepage={false}>
       <div>test</div>
     </Layout>
   );

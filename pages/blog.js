@@ -22,7 +22,7 @@ function freshWriting(date) {
 function Homepage({ writings }) {
   return (
     <>
-      <Layout isHomepage>
+      <Layout isHomepage secondaryPage={false}>
         <Row>
           <Col md={12}>
             <div className="writing-row">

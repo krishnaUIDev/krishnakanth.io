@@ -3,7 +3,7 @@ import { Row, Col } from "react-flexbox-grid";
 import dynamic from "next/dynamic";
 import { config } from "react-spring";
 import { useTranslations } from "next-intl";
-
+import type { NextPage } from "next";
 const TextTransition = dynamic(() => import("react-text-transition"), {
   ssr: false,
 });
@@ -12,30 +12,41 @@ import Layout from "../components/Layout";
 import Icon from "../components/Icon";
 import { PRESENT, SKILLS } from "../constants/Stack";
 import { AFFILIATIONS } from "../constants/Uses";
-import { Client } from "../prismic-configuration";
 
-function About() {
+import { client } from "./api/apollo-client";
+import {
+  BlogConnectionConnection,
+  Query,
+} from "../src/types/generated/graphql";
+import { GraphQLError } from "graphql";
+// import { PrismicRichText } from "@prismicio/react";
+import { BlogPageQuery } from "../graphQueries";
+
+interface AboutProps {
+  data?: BlogConnectionConnection;
+  errors?: GraphQLError;
+}
+
+const About: NextPage<AboutProps> = ({ data, errors }) => {
   const [index, setIndex] = useState(0);
   const avatar = `/images/Avatar.jpg`;
   const t = useTranslations("navBar");
+  const edge = data?.edges?.length ? data?.edges[0] : undefined;
 
-  var subtitleStyle = {
-    color: "#222",
-    marginTop: "0px",
-  };
+  console.log(edge);
 
-  useEffect(() => {
-    const intervalId = setInterval(
-      () => setIndex((index) => index + 1),
-      3000 // every 3 seconds
-    );
-  }, []);
+  // useEffect(() => {
+  //   const intervalId = setInterval(
+  //     () => setIndex((index) => index + 1),
+  //     3000 // every 3 seconds
+  //   );
+  // }, []);
 
   return (
     <>
       <img className="about-avatar" src={avatar} />
 
-      <Layout secondaryPage>
+      <Layout secondaryPage isHomepage={false}>
         <div style={{ marginTop: 50 }}>
           <h1 className="about-h1">
             Krishna{" "}
@@ -90,16 +101,31 @@ function About() {
       </Layout>
     </>
   );
-}
+};
 
-export const getStaticProps = async ({ locale }) => {
-  const client = Client();
-  const queryResult = await client.getAllByType("blog");
+// export const getStaticProps = async ({ locale }) => {
+//   // const client = Client();
+//   // const queryResult = await client.getAllByType("blog");
+//   return {
+//     props: {
+//       messages: require(`../lang/${locale}.json`),
+//     },
+//   };
+// };
+
+export async function getServerSideProps({ locale }) {
+  const { data, errors = null } = await client.query<{
+    allBlogs: Query["allBlogs"];
+  }>({
+    query: BlogPageQuery,
+  });
+
   return {
     props: {
-      messages: require(`../lang/${locale}.json`),
+      data: data?.allBlogs,
+      errors: errors,
     },
   };
-};
+}
 
 export default About;
