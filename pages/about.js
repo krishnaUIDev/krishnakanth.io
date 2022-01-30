@@ -12,6 +12,7 @@ import Layout from "../components/Layout";
 import Icon from "../components/Icon";
 import { PRESENT, SKILLS } from "../constants/Stack";
 import { AFFILIATIONS } from "../constants/Uses";
+import { Client } from "../prismic-configuration";
 
 function About() {
   const [index, setIndex] = useState(0);
@@ -91,12 +92,14 @@ function About() {
   );
 }
 
-export function getStaticProps({ locale }) {
+export const getStaticProps = async ({ locale }) => {
+  const client = Client();
+  const queryResult = await client.getAllByType("blog");
   return {
     props: {
       messages: require(`../lang/${locale}.json`),
     },
   };
-}
+};
 
 export default About;

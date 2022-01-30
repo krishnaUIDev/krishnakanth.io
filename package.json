@@ -7,7 +7,8 @@
     "dev": "next -p 3000",
     "build": "next build",
     "start": "next start -p 3000",
-    "build:static": "next build && next export"
+    "build:static": "next build && next export",
+    "codegen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "author": "KrishnaKanth",
   "license": "ISC",
@@ -23,7 +24,12 @@
     "@types/react": "^17.0.38",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-prismic": "^1.0.9",
     "autoprefixer": "^10.4.2",
+    "graphql": "^16.3.0",
+    "graphql-tag": "^2.12.6",
     "gray-matter": "^4.0.2",
     "mongodb": "^4.3.1",
     "next": "11.0.0",
@@ -45,6 +51,11 @@
     "simple-icons": "^2.17.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.4.0",
+    "@graphql-codegen/introspection": "^2.1.1",
+    "@graphql-codegen/typescript": "^2.4.2",
+    "@graphql-codegen/typescript-operations": "^2.2.2",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.4",
     "prisma": "^3.8.1",
     "tailwindcss": "^3.0.18",
     "typescript": "^4.5.5"
