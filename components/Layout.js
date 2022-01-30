@@ -3,6 +3,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import { Sun, Moon } from "react-feather";
 import Link from "next/link";
 import simpleIcons from "simple-icons";
+import Nav from "./NavBar";
 
 const menu = [
   {
@@ -42,72 +43,14 @@ export const Icon = ({ stack, style }) => {
 };
 
 function Layout({ children, isHomepage, secondaryPage, noHead = false }) {
-  const onLoadTheme =
-    typeof localStorage !== "undefined" && localStorage.getItem("BLOG_THEME");
-  const [theme, setTheme] = useState(onLoadTheme);
-  const [mounted, setMounted] = useState(false);
-  const switchTheme = () => {
-    const setTo = theme === "dark" ? "light" : "dark";
-
-    setTheme(setTo);
-  };
-
-  useEffect(() => {
-    if (onLoadTheme) return;
-
-    // if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    //   setTheme("dark");
-    // }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-
-    localStorage.setItem("BLOG_THEME", theme);
-
-    setMounted(true);
-  }, [theme]);
-
   const containerProps = {
     ...(isHomepage && { md: 12 }),
     ...(!isHomepage && { md: 8, mdOffset: 2 }),
   };
 
-  if (!mounted) return <div />;
-
   return (
     <>
-      <div className="top-menu">
-        <div className="flex flex-row">
-          <Col xs={10}>
-            <ul>
-              <li className="logo">
-                <Link href="/" as="/">
-                  <a>⧩</a>
-                </Link>
-              </li>
-
-              {menu.map(({ path, name }) => (
-                <li key={name}>
-                  <Link href={path} as={path}>
-                    <a>{name}</a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Col>
-
-          <Col xs={2} style={{ textAlign: "right" }}>
-            <button
-              className="theme-switch-button"
-              onClick={() => switchTheme()}
-            >
-              {theme === "dark" ? <Sun /> : <Moon />}
-            </button>
-          </Col>
-        </div>
-      </div>
-
+      <Nav />
       <Grid>
         <Row>
           <Col {...containerProps}>

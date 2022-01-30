@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 import matter from "gray-matter";
 import dynamic from "next/dynamic";
@@ -15,7 +14,6 @@ import Layout, { Icon } from "../components/Layout";
 
 function Homepage({ writings }) {
   const [index, setIndex] = useState(0);
-  const { data: session } = useSession();
 
   const avatar = `/images/Avatar.jpg`;
 
@@ -100,18 +98,6 @@ function Homepage({ writings }) {
           </>
         </div>
       </Layout>
-      {session && (
-        <>
-          Signed in as {session.user.email} <br />
-          <button onClick={() => signOut()}>Sign out</button>
-        </>
-      )}
-      {!session && (
-        <>
-          Not signed in <br />
-          <button onClick={() => signIn()}>Sign in</button>
-        </>
-      )}
     </>
   );
 }
