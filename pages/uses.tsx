@@ -23,7 +23,6 @@ function Uses() {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  c
                 >
                   {name}
                 </a>
