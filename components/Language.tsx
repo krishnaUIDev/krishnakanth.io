@@ -1,8 +1,11 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { TranslateIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 
-export default function Example() {
+export default function Language() {
+  const router = useRouter();
+
   return (
     <div className="ml-3 relative">
       <Menu as="div" className="relative inline-block text-left">
@@ -22,7 +25,7 @@ export default function Example() {
         >
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1">
-              <Menu.Item>
+              <Menu.Item onClick={() => router.push("/en")}>
                 {({ active }) => (
                   <button
                     className={`${
@@ -46,7 +49,7 @@ export default function Example() {
               </Menu.Item>
             </div>
             <div className="px-1 py-1">
-              <Menu.Item>
+              <Menu.Item onClick={() => router.push("/sp")}>
                 {({ active }) => (
                   <button
                     className={`${
@@ -73,42 +76,6 @@ export default function Example() {
         </Transition>
       </Menu>
     </div>
-  );
-}
-
-function EditInactiveIcon(props) {
-  return (
-    <svg
-      {...props}
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M4 13V16H7L16 7L13 4L4 13Z"
-        fill="#EDE9FE"
-        stroke="#A78BFA"
-        strokeWidth="2"
-      />
-    </svg>
-  );
-}
-
-function EditActiveIcon(props) {
-  return (
-    <svg
-      {...props}
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M4 13V16H7L16 7L13 4L4 13Z"
-        fill="#8B5CF6"
-        stroke="#C4B5FD"
-        strokeWidth="2"
-      />
-    </svg>
   );
 }
 
