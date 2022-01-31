@@ -7,8 +7,38 @@ This repo contains the code that is being used
 ## Stack
 
 - Now
-- NextJS
+- NextJS 11
+- NextAuth (user authentication)
 - Markdown
+- typescript 4
+- tailwind css 3
+- GraphQL
+- prismic (CMS)
+- MongoDB (cloud)
+- Vercel (serverless func)
+- Next intl (langauge switch)
+- Cloud s3
+- Amplify
+
+---
+
+#### usefull links
+
+- https://krishna.prismic.io/graphql
+- https://medium.com/geekculture/prismic-io-with-next-js-and-graphql-getting-started-f9e7986b39e2
+-
+
+```graphql
+query allHomePages {
+  allBlogs {
+    edges {
+      node {
+        title
+      }
+    }
+  }
+}
+```
 
 ---
 
