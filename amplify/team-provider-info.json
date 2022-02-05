@@ -1,23 +1,23 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-krishnakanth-dev-235720-authRole",
-            "UnauthRoleArn": "arn:aws:iam::360702241566:role/amplify-krishnakanth-dev-235720-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::360702241566:role/amplify-krishnakanth-dev-235720-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-krishnakanth-dev-235720-deployment",
-            "UnauthRoleName": "amplify-krishnakanth-dev-235720-unauthRole",
-            "StackName": "amplify-krishnakanth-dev-235720",
-            "StackId": "arn:aws:cloudformation:us-east-1:360702241566:stack/amplify-krishnakanth-dev-235720/46eb7d10-8252-11ec-8738-0e53a5478883",
-            "AmplifyAppId": "d1nbh9wi8ox7ai"
-        },
-        "categories": {
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "d1nbh9wi8ox7ai",
-                    "type": "cicd"
-                }
-            }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-krishnakanth-dev-235720-authRole",
+      "UnauthRoleArn": "arn:aws:iam::360702241566:role/amplify-krishnakanth-dev-235720-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::360702241566:role/amplify-krishnakanth-dev-235720-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-krishnakanth-dev-235720-deployment",
+      "UnauthRoleName": "amplify-krishnakanth-dev-235720-unauthRole",
+      "StackName": "amplify-krishnakanth-dev-235720",
+      "StackId": "arn:aws:cloudformation:us-east-1:360702241566:stack/amplify-krishnakanth-dev-235720/46eb7d10-8252-11ec-8738-0e53a5478883",
+      "AmplifyAppId": "d1nbh9wi8ox7ai"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1nbh9wi8ox7ai",
+          "type": "cicd"
         }
+      }
     }
+  }
 }
