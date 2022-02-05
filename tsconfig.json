@@ -19,7 +19,7 @@
     "**/*.ts",
     "**/*.tsx",
     "components/CodeBlock.js",
-    "pages/blog.js"
+    "pages/blog.tsx"
   ],
   "exclude": ["node_modules"]
 }
